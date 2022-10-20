@@ -10,6 +10,8 @@ jobs:
   release_dry_run:
     name: Release (dry-run)
     runs-on: ubuntu-latest
+    outputs:
+      new_release_version: ${{ steps.semantic_dry_run.outputs.new_release_version }}
     steps:
 
       - name: Checkout
@@ -32,11 +34,13 @@ jobs:
 
       - name: Print next release
         run: |
-          echo ${{ steps.semantic_dry_run.outputs.new_release_version }}
+          echo "::set-output name=new_release_version::${{ steps.semantic_dry_run.outputs.new_release_version }}"
 
   go:
     name: Go
     runs-on: ubuntu-latest
+    needs:
+      - release_dry_run
     steps:
 
       - name: Checkout
@@ -51,6 +55,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
+          OMF=${{ needs.start_deployment.outputs.deployment_unit_ref }}
           CGO_ENABLED=0 \
           GOOS=linux \
           GOARCH=amd64 \
