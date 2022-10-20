@@ -34,7 +34,7 @@ jobs:
 
       - name: Print next release
         run: |
-          echo "::set-output name=new_release_version::${{ steps.semantic_dry_run.outputs.new_release_version }}"
+          echo "new_release_version=${{ steps.semantic_dry_run.outputs.new_release_version }}" >> $GITHUB_OUTPUT
 
   go:
     name: Go
@@ -55,7 +55,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          OMF=${{ needs.start_deployment.outputs.deployment_unit_ref }}
+          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
           CGO_ENABLED=0 \
           GOOS=linux \
           GOARCH=amd64 \
