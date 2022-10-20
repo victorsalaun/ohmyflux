@@ -7,6 +7,32 @@ on:
 
 jobs:
 
+  name: Release (dry-run)
+  runs-on: ubuntu-latest
+  steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+
+    - name: Release
+      uses: cycjimmy/semantic-release-action@v3
+      id: semantic_dry_run
+      with:
+        dry_run: true
+        semantic_version: 19.0.5
+        extra_plugins: |
+          @semantic-release/changelog@6.0.1
+          @semantic-release/git@10.0.1
+          conventional-changelog-conventionalcommits@5.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+    - name: Print next release
+      run: |
+        echo ${{ steps.semantic_dry_run.outputs.new_release_version }}
+
   go:
     name: Go
     runs-on: ubuntu-latest
@@ -43,7 +69,6 @@ jobs:
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v3
-        id: semantic
         with:
           semantic_version: 19.0.5
           extra_plugins: |
