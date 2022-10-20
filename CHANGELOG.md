@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/victorsalaun/ohmyflux/compare/v1.1.1...v1.1.2) (2022-10-20)
+
+
+### Bug Fixes
+
+* publish archive ([ac3ec8c](https://github.com/victorsalaun/ohmyflux/commit/ac3ec8c449000df76f1070e6892d8362c2c5b0ae))
+
 ## [1.1.1](https://github.com/victorsalaun/ohmyflux/compare/v1.1.0...v1.1.1) (2022-10-20)
 
 
