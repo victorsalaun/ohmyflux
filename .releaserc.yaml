@@ -11,5 +11,9 @@ plugins:
         - CHANGELOG.md
   - - "@semantic-release/github"
     - assets:
+        - name: "ohmyflux_${nextRelease.gitTag}_linux_amd64.tar.gz"
+          path: "ohmyflux_linux_amd64.tar.gz"
+        - name: "ohmyflux_${nextRelease.gitTag}_linux_arm64.tar.gz"
+          path: "ohmyflux_linux_arm64.tar.gz"
         - name: "ohmyflux_${nextRelease.gitTag}_macOs_amd64.tar.gz"
           path: "ohmyflux_macOs_amd64.tar.gz"

@@ -63,13 +63,49 @@ jobs:
 
       - name: Archive OhMyFlux
         run: |
-          make archive_macOs_arm64
+          make archive_linux_amd64
 
       - name: Upload OhMyFlux
         uses: actions/upload-artifact@v3
         with:
-          name: archive_macOs_arm64
-          path: ohmyflux_macOs_arm64.tar.gz
+          name: archive_linux_amd64
+          path: ohmyflux_linux_amd64.tar.gz
+
+      - name: Build OhMyFlux
+        run: |
+          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          CGO_ENABLED=0 \
+          GOOS=linux \
+          GOARCH=arm64 \
+          make build
+
+      - name: Archive OhMyFlux
+        run: |
+          make archive_linux_arm64
+
+      - name: Upload OhMyFlux
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive_linux_arm64
+          path: ohmyflux_linux_arm64.tar.gz
+
+      - name: Build OhMyFlux
+        run: |
+          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          CGO_ENABLED=0 \
+          GOOS=macos \
+          GOARCH=amd64 \
+          make build
+
+      - name: Archive OhMyFlux
+        run: |
+          make archive_macOs_amd64
+
+      - name: Upload OhMyFlux
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive_macOs_amd64
+          path: ohmyflux_macOs_amd64.tar.gz
 
   release:
     name: Release
@@ -86,7 +122,17 @@ jobs:
       - name: Download OhMyFlux
         uses: actions/download-artifact@v3
         with:
-          name: archive_macOs_arm64
+          name: archive_linux_amd64
+
+      - name: Download OhMyFlux
+        uses: actions/download-artifact@v3
+        with:
+          name: archive_linux_arm64
+
+      - name: Download OhMyFlux
+        uses: actions/download-artifact@v3
+        with:
+          name: archive_macOs_amd64
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v3
