@@ -8,3 +8,6 @@ export CGO_LDFLAGS
 .PHONY: build
 build:
 	GOOS= GOARCH= GOARM= GOFLAGS= CGO_ENABLED= go build -o ohmyflux ./cmd/ohmyflux
+
+archive_macOs_arm64:
+	tar czf ohmyflux_macOs_arm64.tar.gz ohmyflux
