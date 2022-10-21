@@ -18,5 +18,5 @@ archive_linux_arm64:
 archive_macOs_amd64:
 	tar czf ohmyflux_macOs_amd64.tar.gz ohmyflux
 
-archive_macOs_amd64:
+archive_macOs_arm64:
 	tar czf ohmyflux_macOs_arm64.tar.gz ohmyflux
