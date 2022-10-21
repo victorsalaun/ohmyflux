@@ -122,7 +122,7 @@ jobs:
       - name: Upload OhMyFlux
         uses: actions/upload-artifact@v3
         with:
-          name: archive_macOs_amd64
+          name: archive_macOs_arm64
           path: ohmyflux_macOs_arm64.tar.gz
 
   release:
