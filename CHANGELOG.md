@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/victorsalaun/ohmyflux/compare/v1.1.2...v1.1.3) (2022-10-21)
+
+
+### Bug Fixes
+
+* publish archive macos_arm64 ([#7](https://github.com/victorsalaun/ohmyflux/issues/7)) ([47268d8](https://github.com/victorsalaun/ohmyflux/commit/47268d8f511442b8e4e587f4dc81fb651be24e84))
+
 ## [1.1.2](https://github.com/victorsalaun/ohmyflux/compare/v1.1.1...v1.1.2) (2022-10-20)
 
 
