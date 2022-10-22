@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/victorsalaun/ohmyflux/compare/v1.1.3...v1.1.4) (2022-10-22)
+
+
+### Bug Fixes
+
+* help command ([#8](https://github.com/victorsalaun/ohmyflux/issues/8)) ([551583d](https://github.com/victorsalaun/ohmyflux/commit/551583d579512b3df6d8936d415fac00bb636e04))
+
 ## [1.1.3](https://github.com/victorsalaun/ohmyflux/compare/v1.1.2...v1.1.3) (2022-10-21)
 
 
