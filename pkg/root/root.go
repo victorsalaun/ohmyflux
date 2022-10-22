@@ -23,14 +23,6 @@ func NewCmdRoot(factory *cmdutil.Factory, buildVersion, buildDate string) *cobra
 	}
 
 	cmd.Flags().Bool("version", false, "Show ohmyflux version")
-	cmd.PersistentFlags().Bool("help", false, "Show help for command")
-	cmd.SetHelpFunc(func(c *cobra.Command, args []string) {
-		rootHelpFunc(factory, c, args)
-	})
-	cmd.SetUsageFunc(func(c *cobra.Command) error {
-		return rootUsageFunc(factory.IOStreams.ErrOut, c)
-	})
-	cmd.SetFlagErrorFunc(rootFlagErrorFunc)
 
 	// Child commands
 	cmd.AddCommand(versionCmd.NewCmdVersion(factory, buildVersion, buildDate))
