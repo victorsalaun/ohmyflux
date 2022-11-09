@@ -79,10 +79,10 @@ func treeHelmReleaseRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree,
 		if err != nil {
 			return err
 		}
-		//err = treeDeploymentsRun(f, opts, helmReleaseTree, opts.Namespace, helmRelease.Name)
-		//if err != nil {
-		//	return err
-		//}
+		err = treeDeploymentsRun(f, opts, helmReleaseTree, opts.Namespace, helmRelease.Name)
+		if err != nil {
+			return err
+		}
 		err = treeEndpointsRun(f, opts, helmReleaseTree, opts.Namespace, helmRelease.Name)
 		if err != nil {
 			return err
