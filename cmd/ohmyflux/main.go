@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/victorsalaun/ohmyflux/internal/build"
+	"github.com/victorsalaun/ohmyflux/internal/kube"
 	"github.com/victorsalaun/ohmyflux/pkg/cmdutil"
 	"github.com/victorsalaun/ohmyflux/pkg/factory"
 	"github.com/victorsalaun/ohmyflux/pkg/root"
 	"io"
+	"k8s.io/client-go/rest"
 	"net"
 	"os"
 	"strings"
@@ -27,10 +29,15 @@ func main() {
 }
 
 func mainRun() exitCode {
+	config, _ := kube.GetKubeConfig()
+	config.WarningHandler = rest.NoWarnings{}
+	kubernetesClient := kube.GetKubernetesClient(config)
+	kubernetesDynamicClient := kube.GetKubernetesDynamicClient(config)
+
 	buildVersion := build.Version
 	buildDate := build.Date
 
-	cmdFactory := factory.New(buildVersion)
+	cmdFactory := factory.New(kubernetesClient, kubernetesDynamicClient)
 	stderr := cmdFactory.IOStreams.ErrOut
 
 	rootCmd := root.NewCmdRoot(cmdFactory, buildVersion, buildDate)

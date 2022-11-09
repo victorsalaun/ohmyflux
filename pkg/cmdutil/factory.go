@@ -3,6 +3,8 @@ package cmdutil
 import (
 	"github.com/victorsalaun/ohmyflux/pkg/extensions"
 	"github.com/victorsalaun/ohmyflux/pkg/iostreams"
+	"k8s.io/client-go/dynamic"
+	"k8s.io/client-go/kubernetes"
 	"os"
 	"path/filepath"
 	"strings"
@@ -10,6 +12,9 @@ import (
 
 type Factory struct {
 	IOStreams *iostreams.IOStreams
+
+	KubernetesClient        *kubernetes.Clientset
+	KubernetesDynamicClient dynamic.Interface
 
 	ExtensionManager extensions.ExtensionManager
 	ExecutableName   string

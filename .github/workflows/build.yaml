@@ -55,7 +55,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
@@ -69,7 +69,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
           CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
@@ -83,7 +83,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
           CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
@@ -97,7 +97,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          OMF=${{ needs.release_dry_run.outputs.new_release_version }}
+          OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
           CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
