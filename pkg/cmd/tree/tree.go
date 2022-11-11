@@ -130,7 +130,12 @@ func treeDeploymentsRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree,
 		return err
 	}
 	for _, deployment := range deployments.Items {
-		tree.Add("Deployment/" + deployment.Name)
+		deploymentTree := gotree.New("Deployment/" + deployment.Name)
+		err := treeReplicaSetsRun(f, opts, deploymentTree, opts.Namespace, label)
+		if err != nil {
+			return err
+		}
+		tree.AddTree(deploymentTree)
 	}
 	return nil
 }
@@ -164,6 +169,17 @@ func treePodsRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree, namesp
 	}
 	for _, pod := range pods.Items {
 		tree.Add("Pod/" + pod.Name)
+	}
+	return nil
+}
+
+func treeReplicaSetsRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree, namespace string, label string) error {
+	replicaSets, err := api.GetReplicaSets(f.KubernetesClient, namespace, label)
+	if err != nil {
+		return err
+	}
+	for _, replicaSet := range replicaSets.Items {
+		tree.Add("ReplicaSet/" + replicaSet.Name)
 	}
 	return nil
 }

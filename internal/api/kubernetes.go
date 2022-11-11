@@ -66,6 +66,12 @@ func GetPods(kubernetesClient *kubernetes.Clientset, namespace string, label str
 	})
 }
 
+func GetReplicaSets(kubernetesClient *kubernetes.Clientset, namespace string, label string) (*appsv1.ReplicaSetList, error) {
+	return kubernetesClient.AppsV1().ReplicaSets(namespace).List(context.TODO(), metav1.ListOptions{
+		LabelSelector: LabelSelectorKey + label,
+	})
+}
+
 func GetSecrets(kubernetesClient *kubernetes.Clientset, namespace string, label string) (*corev1.SecretList, error) {
 	return kubernetesClient.CoreV1().Secrets(namespace).List(context.TODO(), metav1.ListOptions{
 		LabelSelector: LabelSelectorKey + label,
