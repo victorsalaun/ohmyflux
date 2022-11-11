@@ -91,10 +91,6 @@ func treeHelmReleaseRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree,
 		if err != nil {
 			return err
 		}
-		err = treePodsRun(f, opts, helmReleaseTree, opts.Namespace, helmRelease.Name)
-		if err != nil {
-			return err
-		}
 		err = treeSecretsRun(f, opts, helmReleaseTree, opts.Namespace, helmRelease.Name)
 		if err != nil {
 			return err
@@ -179,7 +175,12 @@ func treeReplicaSetsRun(f *cmdutil.Factory, opts *TreeOptions, tree gotree.Tree,
 		return err
 	}
 	for _, replicaSet := range replicaSets.Items {
-		tree.Add("ReplicaSet/" + replicaSet.Name)
+		replicaSetTree := gotree.New("ReplicaSet/" + replicaSet.Name)
+		err := treePodsRun(f, opts, replicaSetTree, opts.Namespace, label)
+		if err != nil {
+			return err
+		}
+		tree.AddTree(replicaSetTree)
 	}
 	return nil
 }
