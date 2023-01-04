@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/victorsalaun/ohmyflux/compare/v1.6.0...v1.7.0) (2023-01-04)
+
+
+### Features
+
+* fix date ([6377120](https://github.com/victorsalaun/ohmyflux/commit/637712058e0c83671d9b8e1281e5cca1b0176a17))
+
 ## [1.6.0](https://github.com/victorsalaun/ohmyflux/compare/v1.5.0...v1.6.0) (2023-01-04)
 
 
