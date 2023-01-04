@@ -13,5 +13,5 @@ func init() {
 	if version := os.Getenv("OMF_VERSION"); version != "" {
 		Version = version
 	}
-	Date = time.Now().Format("2006-01-02")
+	Date = time.Now().String()
 }
