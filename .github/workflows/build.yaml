@@ -60,7 +60,7 @@ jobs:
       - name: Build OhMyFlux
         run: |
           OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
-          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}'" -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}' -X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
         run: tar czf ohmyflux_linux_amd64.tar.gz ohmyflux
@@ -74,7 +74,7 @@ jobs:
       - name: Build OhMyFlux
         run: |
           OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
-          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}'" -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
+          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}' -X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
         run: tar czf ohmyflux_linux_arm64.tar.gz ohmyflux
@@ -87,7 +87,7 @@ jobs:
 
       - name: Build OhMyFlux
         run: |
-          CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}'" -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux 
+          CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}' -X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux 
 
       - name: Archive OhMyFlux
         run: tar czf ohmyflux_macOs_amd64.tar.gz ohmyflux
@@ -101,7 +101,7 @@ jobs:
       - name: Build OhMyFlux
         run: |
           OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
-          CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}'" -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
+          CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags="-X 'github.com/victorsalaun/ohmyflux/internal/build.Version=${{ needs.release_dry_run.outputs.new_release_version }}' -X 'github.com/victorsalaun/ohmyflux/internal/build.Date=${{ needs.release_dry_run.outputs.date }}'" -o ohmyflux ./cmd/ohmyflux
 
       - name: Archive OhMyFlux
         run: tar czf ohmyflux_macOs_arm64.tar.gz ohmyflux
