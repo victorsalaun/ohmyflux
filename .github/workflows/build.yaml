@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       new_release_version: ${{ steps.semantic_dry_run.outputs.new_release_version }}
+      date: ${{ steps.semantic_dry_run.outputs.date }}
     steps:
 
       - name: Checkout
