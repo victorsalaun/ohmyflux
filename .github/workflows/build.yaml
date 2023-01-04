@@ -84,7 +84,7 @@ jobs:
       - name: Build OhMyFlux
         run: |
           OMF_VERSION=${{ needs.release_dry_run.outputs.new_release_version }}
-          CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o ohmyflux ./cmd/ohmyflux
+          CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'build.Version=v1.0.0'" -o ohmyflux ./cmd/ohmyflux 
 
       - name: Archive OhMyFlux
         run: tar czf ohmyflux_macOs_amd64.tar.gz ohmyflux
