@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/victorsalaun/ohmyflux/compare/v1.1.4...v1.2.0) (2023-01-04)
+
+
+### Features
+
+* fix OMF_VERSION ([5651862](https://github.com/victorsalaun/ohmyflux/commit/5651862657374b4babbdb0607ae1be10ce1b682c))
+
 ## [1.1.4](https://github.com/victorsalaun/ohmyflux/compare/v1.1.3...v1.1.4) (2022-10-22)
 
 
